@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WhatsAppClone</string>
+    <string name="descricao_validacao">Você recebeu um SMS para validação do seu número, digite o código de validação abaixo:</string>
+    <string name="logo_do_whatsapp">Logo do whatsapp</string>
+    <string name="digite_seu_nome">Digite o nome</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="_99999_9999">99999-9999</string>
+    <string name="_55">+55</string>
+    <string name="_81">(81)</string>
+    <string name="item1">Item1</string>
+</resources>
