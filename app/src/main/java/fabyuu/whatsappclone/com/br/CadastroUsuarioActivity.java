@@ -1,5 +1,6 @@
 package fabyuu.whatsappclone.com.br;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
 import fabyuu.whatsappclone.com.config.ConfiguracaoFirebase;
+import fabyuu.whatsappclone.com.helper.Base64Custom;
 import fabyuu.whatsappclone.com.model.Usuario;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
@@ -67,11 +69,15 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     Toast.makeText(CadastroUsuarioActivity.this, "Sucesso ao cadastrar usuário", Toast.LENGTH_SHORT).show();
 
                     FirebaseUser firebaseUser = task.getResult().getUser();
-                    usuario.setId( firebaseUser.getUid() );
+
+                    String identificadoUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                    usuario.setId( identificadoUsuario );
                     usuario.salvar();
 
-                    auth.signOut();;
-                    finish();
+
+                    abrirUsuarioLogado();
+                    //auth.signOut();;
+                    //finish();
 
                 }else{
 
@@ -95,5 +101,12 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    public  void abrirUsuarioLogado(){
+        Intent intent = new Intent(CadastroUsuarioActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
