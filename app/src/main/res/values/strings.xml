@@ -8,4 +8,7 @@
     <string name="_55">+55</string>
     <string name="_81">(81)</string>
     <string name="item1">Item1</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

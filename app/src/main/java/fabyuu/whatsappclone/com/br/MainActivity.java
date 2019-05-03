@@ -1,6 +1,8 @@
 package fabyuu.whatsappclone.com.br;
 
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,12 +18,18 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.zip.Inflater;
 
+import fabyuu.whatsappclone.com.adapter.TabAccessorAdpter;
 import fabyuu.whatsappclone.com.config.ConfiguracaoFirebase;
 
 
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private Toolbar mToolbar;
+    private ViewPager mViewPager;
+    private TabLayout mTabLayout;
+    private TabAccessorAdpter mTabAccessorAdpter;
 
 
     private DatabaseReference referenciaFirebase;
@@ -32,6 +40,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mToolbar = (Toolbar)  findViewById(R.id.main_page_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("WhatsApp");
+
+        mViewPager = (ViewPager) findViewById(R.id.main_tabs_pager);
+        mTabAccessorAdpter = new TabAccessorAdpter(getSupportFragmentManager());
+        mViewPager.setAdapter(mTabAccessorAdpter);
+
+        mTabLayout = (TabLayout) findViewById(R.id.main_tab);
+        mTabLayout.setupWithViewPager(mViewPager);
 
         referenciaFirebase = ConfiguracaoFirebase.getFirebase();
 
