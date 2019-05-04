@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CadastroUsuarioActivity"/>
-        <activity android:name=".ValidadorActivity"/>
         <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".LoginActivity" android:theme="@style/AppLoginTheme">
             <intent-filter>

@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import fabyuu.whatsappclone.com.config.ConfiguracaoFirebase;
+import fabyuu.whatsappclone.com.helper.Base64Custom;
 import fabyuu.whatsappclone.com.helper.Permissoes;
 import fabyuu.whatsappclone.com.helper.Preferencias;
 import fabyuu.whatsappclone.com.model.Usuario;
@@ -103,6 +104,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if( task.isSuccessful() ){
+
+                    Preferencias preferencias = new Preferencias(LoginActivity.this);
+                    String identificadorUsuarioLogado = Base64Custom.codificarBase64(usuario.getEmail());
+                    preferencias.salvarDados( identificadorUsuarioLogado );
+
                     abrirTelaPrincipal();
                     Toast.makeText(LoginActivity.this, "Logado", Toast.LENGTH_SHORT).show();
                 }else{

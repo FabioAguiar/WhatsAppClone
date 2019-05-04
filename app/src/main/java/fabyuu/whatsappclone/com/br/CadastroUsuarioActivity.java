@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import fabyuu.whatsappclone.com.config.ConfiguracaoFirebase;
 import fabyuu.whatsappclone.com.helper.Base64Custom;
+import fabyuu.whatsappclone.com.helper.Preferencias;
 import fabyuu.whatsappclone.com.model.Usuario;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
@@ -74,6 +75,8 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     usuario.setId( identificadoUsuario );
                     usuario.salvar();
 
+                    Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
+                    preferencias.salvarDados( identificadoUsuario );
 
                     abrirUsuarioLogado();
                     //auth.signOut();;
