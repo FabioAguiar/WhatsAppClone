@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import fabyuu.whatsappclone.com.adapter.ContatoAdapter;
 import fabyuu.whatsappclone.com.br.R;
 import fabyuu.whatsappclone.com.config.ConfiguracaoFirebase;
 import fabyuu.whatsappclone.com.helper.Preferencias;
@@ -30,7 +31,7 @@ public class FragmentContatos extends Fragment {
 
     private ListView listView;
     private ArrayAdapter adapter;
-    private ArrayList<String> contatos;
+    private ArrayList<Contato> contatos;
     private DatabaseReference firebase;
     private ValueEventListener valueEventListenerContatos;
 
@@ -63,8 +64,10 @@ public class FragmentContatos extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_fragment_contatos, container, false);
 
         listView = (ListView) view.findViewById(R.id.lv_contatos);
-        adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, contatos);
 
+        //adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, contatos);
+
+        adapter = new ContatoAdapter( getActivity(), contatos );
         listView.setAdapter( adapter );
 
         //Recuperar dados com Firebase
@@ -87,7 +90,7 @@ public class FragmentContatos extends Fragment {
                 for ( DataSnapshot dados : dataSnapshot.getChildren() ){
 
                     Contato contato = dados.getValue( Contato .class);
-                    contatos.add( contato.getNome() );
+                    contatos.add( contato );
 
                 }
 
