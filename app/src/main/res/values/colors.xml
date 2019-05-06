@@ -6,4 +6,5 @@
     <color name="unselected_tab">#848080</color>
     <color name="selected_tab">#000000</color>
     <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>

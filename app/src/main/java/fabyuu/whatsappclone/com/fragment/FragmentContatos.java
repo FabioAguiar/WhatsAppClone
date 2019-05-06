@@ -1,6 +1,7 @@
 package fabyuu.whatsappclone.com.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -19,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import fabyuu.whatsappclone.com.adapter.ContatoAdapter;
+import fabyuu.whatsappclone.com.br.ConversaActivity;
 import fabyuu.whatsappclone.com.br.R;
 import fabyuu.whatsappclone.com.config.ConfiguracaoFirebase;
 import fabyuu.whatsappclone.com.helper.Preferencias;
@@ -103,6 +106,15 @@ public class FragmentContatos extends Fragment {
 
             }
         };
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getActivity(), ConversaActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
